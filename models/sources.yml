@@ -1,0 +1,11 @@
+sources:
+  - name: s1
+    database: dev_db
+    schema: dev_Schema
+    tables:
+      - name: customers
+      - name: orders
+      - name: payment
+      - name: t_customers
+      - name: t_nation
+      - name: t_ticket_info

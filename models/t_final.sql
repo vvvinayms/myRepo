@@ -1,6 +1,12 @@
-select * from {{ ref('t_customers') }} customers ,
-select * from {{ ref('t_orders') }} orders ,
-select * from {{ ref('t_customer_orders') }} customer_orders ,
+with customers as (
+select * from {{ ref('t_customers') }}
+),
+orders as (
+select * from {{ ref('t_orders') }}
+) ,
+customer_orders as (
+select * from {{ ref('t_customer_orders') }}
+),
 final as (
 select
 customers.customer_id,

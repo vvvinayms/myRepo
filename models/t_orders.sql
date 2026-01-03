@@ -3,13 +3,12 @@
         materialized='ephemeral'
     )
 }}
-with customer_orders as (
+with orders as (
 select
-customer_id,
-min(order_date) as first_order_date,
-max(order_date) as most_recent_order_date,
-count(*) as number_of_orders
-from dev_db.dev_schema.orders
-group by 1
+order_id as order_id,
+customer_id as customer_id,
+order_date,
+status
+from {{ source('s1', 'orders') }}
 )
-select * from customer_orders
+select * from orders
