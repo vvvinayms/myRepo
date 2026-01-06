@@ -1,0 +1,25 @@
+models:
+  - name: cust_new  #model name created under models
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+  - name: orders_new
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - relationships:
+              field: (customer_id)
+              to: ref('cust_new')   # parent model name which has to be related with
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['completed','return_pending','placed','shipped','returned']
+                
+          
+          
